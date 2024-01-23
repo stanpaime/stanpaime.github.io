@@ -1,0 +1,546 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(32, 45, 56);
+    margin: 0;
+    padding: 0;
+    padding-top: 120px;
+}
+
+h1 {
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+    color: rgb(243, 243, 255);
+    background-color: rgb(32, 45, 56);
+    margin: 0;
+}
+
+h2,
+p {
+    padding: 5px;
+    margin: 0;
+}
+
+h3 {
+    font-weight: 600;
+    font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container {
+    /* background-color: #46240c; */
+    width: 100%;
+    margin: 0 auto;
+    /* border: 5px solid #46240c; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.container div div {
+    padding: 5px 0px;
+    flex-basis: auto;
+    /* text-align: center; */
+    flex-grow: 1;
+    /* background-color: rgb(32, 45, 56); */
+}
+
+.col {
+    margin: 0;
+
+}
+
+form {
+    margin: 5px;
+}
+
+ol {
+    color: rgb(32, 45, 56);
+    background-color: rgb(212, 226, 236);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+
+section ol {
+    background-color: rgb(212, 226, 236);
+}
+
+ul,
+li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+table {
+    background-color: rgb(255, 213, 161);
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+#altDivAboutMe,
+#altDivBio,
+#altSkillBio {
+    height: 500px;
+    background-color: #cedaf3;
+    color: rgb(32, 45, 56);
+}
+
+#altDivMyExp {
+    height: 700px;
+    background-color: #cedaf3;
+    color: rgb(32, 45, 56);
+}
+
+.navbar-brand {
+    transition: 1s cubic-bezier(0.83, 0, 0.17, 2);
+}
+
+.navbar-brand:focus {
+    border-radius: 90%;
+    transform: rotate(360deg) scale(0.8);
+    background-color: rgb(196, 217, 255);
+}
+
+nav {
+    background-color: rgb(32, 45, 56);
+    font-size: 1em;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#navbarNav {
+    justify-content: center;
+    padding: 15px;
+}
+
+.nav-link {
+    color: rgb(212, 226, 236);
+    font-weight: 700;
+}
+
+.nav-item {
+    border-radius: 10px;
+}
+
+.navbar-toggler {
+    background-color: rgb(212, 226, 236);
+}
+
+.navbar-nav>a:hover {
+    color: rgb(241, 240, 255);
+    font-weight: 700;
+}
+
+.navbar-nav>a:focus {
+    background-color: rgba(115, 189, 192, 0.034);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+#brand {
+    position: absolute;
+    padding: 0px;
+    /* remove the logo from the flow */
+    left: 20px;
+    /* move the logo to left */
+    height: 80px;
+    width: 80px;
+    border: 1px solid #cedaf3;
+}
+
+button {
+    background: none;
+    border-width: 1px;
+    border-color: black;
+    color: #46240c;
+    margin: 10px;
+    padding: 1em 2em;
+    transition: all 0.25s;
+}
+
+button:hover {
+    background-color: rgb(230, 173, 173);
+    /* box-shadow: 0 0.5em 0.5em -0.4em rgb(57, 120, 141);
+    transform: translateY(-0.25em); */
+    cursor: pointer;
+}
+
+
+#download {
+    background-color: rgb(212, 226, 236);
+    color: rgb(32, 45, 56);
+    position: absolute;
+    right: 20px;
+    font-weight: 700;
+}
+
+#download:hover,
+#download2:hover {
+    background-color: aliceblue;
+}
+
+/* #download:focus,
+#download2:focus {
+    background-color: aliceblue;
+    border-width: 1px;
+    border-color: rgb(61, 58, 58);
+} */
+
+#download2 {
+    background-color: rgb(212, 226, 236);
+    color: rgb(32, 45, 56);
+    font-weight: 700;
+}
+
+#contactBtn {
+    color: rgb(212, 226, 236);
+    border-color: rgb(212, 226, 236);
+    font-weight: 700;
+}
+
+.dlButton {
+    text-align: center;
+    width: 100%;
+}
+
+#title {
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 20px 0;
+    font-weight: 700;
+}
+
+#myIntro {
+    height: auto;
+    padding: 50px;
+    color: #cedaf3;
+    background-color: rgb(32, 45, 56);
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+#myInfo {
+    width: 100%;
+    color: #cedaf3;
+    text-align: justify;
+}
+
+#horiLineBotBlock {
+    width: 13%;
+    padding-top: 40px;
+    border-bottom: 5px solid rgb(32, 56, 46);
+}
+
+#horiLineTopBlock {
+    margin-left: 30.05%;
+    width: 20%;
+    border-top: 5px solid rgb(32, 56, 46);
+}
+
+#horiLineTopBlockRight {
+    margin-left: 49.9%;
+    width: 20%;
+    border-top: 5px solid rgb(32, 56, 46);
+}
+
+#vertLineBlock {
+    margin-left: 10%;
+    width: 25%;
+    height: 40px;
+    border-right: 2px solid rgb(32, 45, 56);
+    border-left: 2px solid rgb(32, 45, 56);
+}
+
+#vertLineBlock2 {
+    width: 50%;
+    height: 5%;
+    border-right: 2px solid rgb(32, 45, 56);
+}
+
+#aboutMeTitle {
+    padding: 5px;
+}
+
+#aboutMe {
+    border-right: 2px solid rgb(32, 45, 56);
+    padding: 30px;
+    text-align: center;
+}
+
+#aboutMe2 {
+    padding: 30px;
+}
+
+#mySkills {
+    padding: 30px;
+    text-align: center;
+}
+
+#mySkill {
+    border: 2px solid rgb(32, 45, 56);
+}
+
+/* FOR TIMELINE */
+/* Set a background color */
+/* body {
+    background-color: #474e5d;
+    font-family: Helvetica, sans-serif;
+} */
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: rgb(32, 45, 56);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+}
+
+/* Container around content */
+.expContainer {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+/* The circles on the timeline */
+.expContainer::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    right: -9px;
+    background-color: white;
+    border: 2px solid rgb(32, 45, 56);
+    top: 25px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Place the container to the left */
+.left {
+    left: 0;
+}
+
+/* Place the container to the right */
+.right {
+    left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+    left: -6px;
+}
+
+/* The actual content */
+.content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+}
+
+#digConn {
+    width: auto;
+    height: auto;
+}
+
+#SMLogo {
+    width: 30px;
+    height: 30px;
+    text-decoration: none;
+}
+
+#skillsLogo {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+
+    /* Place the timelime to the left */
+    .timeline::after {
+        left: 31px;
+    }
+
+    /* Full-width containers */
+    .expContainer {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    /* Make sure that all arrows are pointing leftwards */
+    .expContainer::before {
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+    }
+
+    /* Make sure all circles are at the same spot */
+    .left::after,
+    .right::after {
+        left: 25px;
+    }
+
+    /* Make all right containers behave like the left ones */
+    .right {
+        left: 0%;
+    }
+
+}
+
+/* #main1 {
+    text-transform: uppercase;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: rgb(5, 5, 24);
+    background-color: #d4afb9;
+    padding: 20px 0;
+    font-weight: 700;
+} */
+
+/* #main2 {
+    padding: 50px;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    color: rgb(5, 5, 24);
+    background-color: #d1cfe2;
+} */
+
+/* .circle {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(32, 45, 56);
+    transition: 1s cubic-bezier(0.83, 0, 0.17, 1);
+    margin: 20px;
+}
+
+.circle:hover {
+    border-radius: 50%;
+    transform: rotate(45deg) scale(0.5) translate(100px);
+    background-color: rgb(196, 217, 255);
+} */
+
+/*
+img {
+    width: 30%;
+    margin: calc(10%/6);
+}
+
+#name {
+    text-transform: uppercase;
+    border-bottom: 2px solid #ffc09b;
+    width: 30%;
+    margin-left: calc(10%/6);
+    padding: 20px 0;
+    font-weight: 700;
+}
+
+
+#main {
+    background-color: #0c4638;
+    width: 90%;
+    height: 300px;
+    margin: 0 auto;
+    border: 5px solid #0c4638;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#main3 {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    flex: 1 2 100px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 4em;
+    }
+
+    nav,
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 3em;
+    }
+}
+ */
