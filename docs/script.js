@@ -1,11 +1,20 @@
+//TODO: Add new difficulty
+
 var header = document.getElementById("startHeader");
 var myScore = document.getElementById("myTime");
+var speedVal = document.getElementById("speedVal");
 var time = 20;
 var highScore = document.getElementById("highScore");
 var id = null;
 var resetId = null;
+var timeId = null;
+var started = false;
 var ex = 5;
 var ey = 5;
+var spd1 = 0.3;
+var spd2 = 0.6;
+var spd3 = 1;
+var currspd = spd1;
 var elem = document.getElementById("gamePiece");
 var hobs1 = document.getElementById("hobs1");
 var hobs2 = document.getElementById("hobs2");
@@ -27,16 +36,36 @@ function startGame() {
 var gameArea = {
   start: function () {
     console.log("GAME START");
+    keypress = null;
     clearInterval(id);
     clearInterval(resetId);
+    clearInterval(timeId);
+    // timeId = setInterval(timer, 1000);
     id = setInterval(frame, 20);
     resetId = setInterval(reset, 200);
+    // timeId = setInterval(timer, 1000);
     window.addEventListener("keydown", function (e) {
-      keypress = e.key;
-      // console.log(keypress);
+      if (
+        e.key === "ArrowUp" ||
+        e.key === "ArrowDown" ||
+        e.key === "ArrowRight" ||
+        e.key === "ArrowLeft" ||
+        e.key === "r" ||
+        e.key === "R" ||
+        e.key === " "
+      ) {
+        if (started == true) {
+          keypress = e.key;
+          e.view.event.preventDefault();
+        } else {
+          keypress = "";
+        }
+      }
     });
+
     header.append("GAME START");
     myTime.append("Time remaining: " + time + "s");
+    speedVal.innerHTML = "Speed: " + currspd;
     if (getScore() == 0) {
       highScore.append("Latest remaining time: ");
     } else {
@@ -46,87 +75,115 @@ var gameArea = {
   stop: function () {
     keypress = "";
     clearInterval(id);
-    header.innerHTML = "GAME OVER";
+    clearInterval(timeId);
     reset();
   }
 };
 
 function reset() {
-  if (keypress == "r") {
+  if (keypress === "r") {
     count = 0;
     ex = 5;
     ey = 5;
+    currspd = spd1;
     time = 20;
     elem.style.top = ey + "px";
     elem.style.left = ex + "px";
     keypress = "";
     mvmt = "";
+    started = false;
     clearInterval(id);
     id = setInterval(frame, 20);
     clearInterval(resetId);
     resetId = setInterval(reset, 200);
+    clearInterval(timeId);
     header.innerHTML = "GAME START";
     myTime.innerHTML = "Time remaining: " + time + "s";
-    highScore.innerHTML = "Latest remaining time: " + getScore() + "s";
+    speedVal.innerHTML = "Speed: " + currspd;
   }
 }
 
+function resetClicked() {
+    count = 0;
+    ex = 5;
+    ey = 5;
+    currspd = spd1;
+    time = 20;
+    elem.style.top = ey + "px";
+    elem.style.left = ex + "px";
+    keypress = "";
+    mvmt = "";
+    started = false;
+    clearInterval(id);
+    id = setInterval(frame, 20);
+    clearInterval(resetId);
+    resetId = setInterval(reset, 200);
+    clearInterval(timeId);
+    header.innerHTML = "GAME START";
+    myTime.innerHTML = "Time remaining: " + time + "s";
+    speedVal.innerHTML = "Speed: " + currspd;
+}
+
 function frame() {
-  // console.log(score);
   for (i = 0; i < obstacles.length; i++) {
     switch (keypress) {
       case "ArrowRight":
+        saveKeypress();
         if (crash(obstacles[i]) || ex >= 650) {
           loseMessage();
         } else {
-          // console.log(ex);
-          ex += 0.3;
+          ex += currspd;
           elem.style.left = ex + "px";
-          time -= 0.0025;
-          myTime.innerHTML = "Time remaining: " + Math.round(time) + "s";
         }
         break;
       case "ArrowLeft":
+        saveKeypress();
         if (crash(obstacles[i]) || ex <= 0) {
           loseMessage();
         } else {
-          ex -= 0.3;
+          ex -= currspd;
           elem.style.left = ex + "px";
-          time -= 0.0025;
-          myTime.innerHTML = "Time remaining: " + Math.round(time) + "s";
         }
         break;
       case "ArrowDown":
+        saveKeypress();
         if (crash(obstacles[i]) || ey >= 450) {
           loseMessage();
         } else {
-          ey += 0.3;
+          ey += currspd;
           elem.style.top = ey + "px";
-          time -= 0.0025;
-          myTime.innerHTML = "Time remaining: " + Math.round(time) + "s";
         }
         break;
       case "ArrowUp":
+        saveKeypress();
         if (crash(obstacles[i]) || ey <= 0) {
           loseMessage();
         } else {
-          ey -= 0.3;
+          ey -= currspd;
           elem.style.top = ey + "px";
-          time -= 0.0025;
-          myTime.innerHTML = "Time remaining: " + Math.round(time) + "s";
+        }
+        break;
+      case " ":
+        keypress = getKeypress();
+        if (currspd == spd1) {
+          currspd = spd2;
+          changeSpeed();
+        } else if (currspd == spd2) {
+          currspd = spd3;
+          changeSpeed();
+        } else if (currspd == spd3) {
+          currspd = spd1;
+          changeSpeed();
         }
         break;
     }
-
-    // console.log(ex);
-    // if (crash(obstacles[i]) || ex >= 650 || ex <= 0 || ey >= 450 || ey <= 0) {
-    //   loseMessage();
-    // }
   }
 
   //Win the game
   if (crash(winTile)) {
     saveScore();
+    header.innerHTML = "GOODJOB! YOU GTFO!";
+    highScore.append(" (WON)");
     gameArea.stop();
   } else if (time <= 0.5) {
     loseMessage();
@@ -136,21 +193,68 @@ function frame() {
 //Lose the game
 function loseMessage() {
   console.log("CRASHED!");
-  highScore.innerHTML =
-    "You lost! Your latest remaining time is: " + Math.round(getScore()) + "s";
+  saveScore();
+  header.innerHTML = "OOPS YOU GOT CAUGHT, TIME TO OT!";
+  highScore.append(" (LOST)");
   gameArea.stop();
 }
 
 function saveScore() {
+  clearInterval(timeId);
   sessionStorage.setItem("time", time);
-
   highScore.innerHTML =
-    "You win! Your latest remaining time is: " + Math.round(getScore()) + "s";
+    "Your latest remaining time is: " + Math.round(getScore()) + "s";
 }
 
 function getScore() {
   var latestScore = Math.round(sessionStorage.getItem("time"));
   return latestScore;
+}
+
+function saveKeypress() {
+  sessionStorage.setItem("key", keypress);
+}
+
+function getKeypress() {
+  keypress = sessionStorage.getItem("key");
+  console.log(keypress);
+  return keypress;
+}
+
+window.addEventListener("keydown", function (e) {
+  if (e.key === "c" || e.key === "C") {
+    if (started == false) {
+      started = true;
+      timeId = setInterval(timer, 1000);
+      if (time == 20) {
+        keypress = "ArrowRight";
+      }
+    } else {
+      keypress = getKeypress();
+    }
+  }
+});
+
+function startTimer() {
+  if (started == false) {
+    timeId = setInterval(timer, 1000);
+    started = true;
+    if (time == 20) {
+      keypress = "ArrowRight";
+    }
+  } else {
+    keypress = getKeypress();
+  }
+}
+
+function timer() {
+  if (time <= 0) {
+    clearInterval(timeId);
+    gameArea.stop();
+  } else {
+    time -= 1;
+    myTime.innerHTML = "Time remaining: " + Math.round(time) + "s";
+  }
 }
 
 function crash(otherobj) {
@@ -175,6 +279,11 @@ function crash(otherobj) {
     crash = false;
   }
   return crash;
+}
+
+function changeSpeed() {
+  console.log("Speed changed! Current speed is: " + currspd);
+  speedVal.innerHTML = "Speed: " + currspd;
 }
 
 // function myMove() {
