@@ -1,0 +1,181 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+p {
+  margin: 3px;
+  padding: 3px;
+}
+
+#header {
+  text-align: center;
+  align-items: center;
+  background-color: #ffe7a3;
+  margin: 0;
+  padding: 0;
+  font-family: "Dangrek", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+  color: #ff2121;
+}
+
+#main {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  background-color: #ffe7a3;
+  margin: 0;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 1200px) {
+  #main {
+    flex-direction: column;
+  }
+}
+
+#myContainer {
+  width: 700px;
+  height: 500px;
+  position: relative;
+  background: #fad3c8;
+  border: 5px solid red;
+  border-radius: 10px;
+}
+
+#infoHeader {
+  width: 500px;
+  background: #fad3c8;
+  border: 5px solid black;
+  border-radius: 45px;
+  margin: 5px;
+  font-family: "Dangrek", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#startHeader,
+#myTime,
+#highScore,
+#speedVal {
+  margin: 0px;
+  padding: 3px;
+}
+
+.button {
+  background-color: #ffe7a3;
+  border-radius: 45px;
+  border: 3px solid black;
+  padding: 5px;
+  margin: 5px;
+  font-size: 20px;
+  font-family: "Dangrek", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  transition-duration: 0.1s;
+}
+
+.button:hover {
+  background-color: #f73220; /* Green */
+  color: white;
+}
+
+.button:active {
+  background-color: #c22617;
+  box-shadow: 0 2px #666;
+  transform: translateY(1px);
+}
+
+#gamePiece {
+  top: 5px;
+  left: 5px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: black;
+}
+
+#gamePic {
+  width: 50px;
+  height: 50px;
+  /*   position: absolute; */
+}
+
+.ob {
+  position: absolute;
+  background-color: #e8371c;
+}
+
+#hobs1 {
+  width: 450px;
+  height: 50px;
+  top: 75px;
+  left: 200px;
+}
+
+#hobs2 {
+  width: 350px;
+  height: 50px;
+  top: 200px;
+  left: 200px;
+}
+
+#hobs3 {
+  width: 450px;
+  height: 50px;
+  top: 315px;
+  left: 75px;
+}
+
+#vobs1 {
+  width: 50px;
+  height: 360px;
+  top: 75px;
+  left: 50px;
+}
+
+#vobs2 {
+  width: 50px;
+  height: 425px;
+  top: 75px;
+  left: 625px;
+}
+
+#vobs3 {
+  width: 125px;
+  height: 75px;
+  top: 425px;
+  left: 500px;
+}
+
+#vobs4 {
+  width: 50px;
+  height: 75px;
+  top: 350px;
+  left: 350px;
+}
+
+#vobs5 {
+  width: 100px;
+  height: 75px;
+  top: 425px;
+  left: 175px;
+}
+
+#winTile {
+  width: 10px;
+  height: 50px;
+  top: 445px;
+  left: 10px;
+  border-radius: 45px;
+  background-color: green;
+}
+
+.dangrek-regular {
+  font-family: "Dangrek", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
